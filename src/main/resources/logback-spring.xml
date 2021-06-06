@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="DEBUG"/>
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <!-- <AppenderName> заменить на то, что понравится -->
+    <appender name="AppenderName" class="ru.sb.lowcode.logback.appenders.PlatformLoggerAppender">
+        <!-- какие необязательные поля можно указывать, описано здесь: https://confluence.ca.sbrf.ru/pages/viewpage.action?pageId=3216606807 -->
+        <!-- timestamp и message указывать не нужно - они подкладываются автоматически при вызове методов логгера! -->
+        <url>http://logger-endpoint-http-ci00641491-idevgen-logger-ift.apps.dev-gen.ca.sbrf.ru/v1/events</url>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <moduleId>spacetrans</moduleId>
+    </appender>
+
+    <!-- указать пакет, для которого будет действовать правило отправки логов в ФП Журналирование -->
+    <logger name="com.company.spacetrans">
+        <!-- <AppenderName> должен совпадать с тем, что выше -->
+        <appender-ref ref="AppenderName"/>
+    </logger>
+
+    <logger name="com.company.spacetrans" level="error" additivity="false">
+        <appender-ref ref="Console"/>
+    </logger>
+</configuration>

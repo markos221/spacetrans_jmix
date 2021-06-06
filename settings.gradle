@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        maven {
+            url "http://nexus.sigma.sbrf.ru:8099/nexus/content/groups/public/"
+            allowInsecureProtocol = true
+        }
+        maven {
+            url "http://nexus.sigma.sbrf.ru:8099/nexus/content/repositories/gradle_plugins_proxy/"
+            allowInsecureProtocol = true
+        }
+        maven {
+            url "http://nexus.sigma.sbrf.ru:8099/nexus/content/repositories/sonatype-public-grid_proxy/"
+            allowInsecureProtocol = true
+        }
+        maven {
+            url "https://nexus.sigma.sbrf.ru/nexus/content/repositories/jmix-snapshot-proxy/"
+        }
+        maven {
+            url "https://nexus.sigma.sbrf.ru/nexus/content/repositories/jmix-proxy/"
+        }
+    }
+}
+
+rootProject.name = 'spacetrans'
+
+include 'frontend'

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="spacetrans" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.spacetrans.entity.Gas</class>
+        <class>com.company.spacetrans.entity.AtmosphericGas</class>
+        <class>com.company.spacetrans.entity.Atmosphere</class>
+        <class>com.company.spacetrans.entity.Moon</class>
+        <class>com.company.spacetrans.entity.Planet</class>
+        <class>com.company.spacetrans.entity.AstronomicalBody</class>
+        <class>com.company.spacetrans.entity.Customer</class>
+        <class>com.company.spacetrans.entity.Individual</class>
+        <class>com.company.spacetrans.entity.Discounts</class>
+        <class>com.company.spacetrans.entity.Dimensions</class>
+        <class>com.company.spacetrans.entity.Coordinates</class>
+        <class>com.company.spacetrans.entity.Spaceport</class>
+        <class>com.company.spacetrans.entity.Carrier</class>
+        <class>com.company.spacetrans.entity.WaybillItem</class>
+        <class>com.company.spacetrans.entity.Waybill</class>
+        <class>com.company.spacetrans.entity.Company</class>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create / create-drop / update -->
+
+            <property name="hibernate.show_sql" value="true" /> <!-- Show SQL in console -->
+            <property name="hibernate.format_sql" value="true" /> <!-- Show SQL formatted -->
+        </properties>
+    </persistence-unit>
+</persistence>
