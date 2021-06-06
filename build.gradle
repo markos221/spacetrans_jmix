@@ -1,0 +1,96 @@
+buildscript {
+    repositories {
+        //Standard Sber repo with sber-plugin
+        maven {
+            url 'http://nexus.sigma.sbrf.ru:8099/nexus/content/repositories/sbt-dopefish_release/'
+            credentials {
+                username = rootProject['sbUser']
+                password = rootProject['sbPassword']
+            }
+            allowInsecureProtocol = true
+        }
+        maven {
+            url 'http://nexus.sigma.sbrf.ru:8099/nexus/content/repositories/sbt-dopefish_snapshot/'
+            credentials {
+                username = rootProject['sbUser']
+                password = rootProject['sbPassword']
+            }
+            allowInsecureProtocol = true
+        }
+    }
+    dependencies {
+        classpath platform('ru.sb.jmix.bom:jmix-sber-bom:1.3.0-SNAPSHOT')
+
+        classpath("ru.sb.gradle:sber-plugin:0.2.0-SNAPSHOT")
+
+        classpath("ru.sb.tools.security.export:gradle-plugin")
+        classpath("ru.sb.tools.audit.export:gradle-plugin")
+    }
+}
+
+plugins {
+    id 'io.jmix' version '0.9.0'
+    id 'java'
+}
+
+apply plugin: 'sber-plugin'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'security-exporter-plugin'
+apply plugin: 'audit-exporter-plugin'
+
+jmix {
+    bomVersion = '0.9.0'
+}
+
+group = 'com.company.spacetrans'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+spasSecurityModel { moduleName = 'spacetrans' }
+auditModel { module = 'spacetrans' }
+
+dependencies {
+    implementation platform('ru.sb.jmix.bom:jmix-sber-bom:1.3.0-SNAPSHOT')
+
+    implementation 'io.jmix.core:jmix-core-starter'
+    implementation 'io.jmix.data:jmix-hibernate-starter'
+    implementation 'io.jmix.security:jmix-security-starter'
+    implementation 'io.jmix.security:jmix-security-data-starter'
+    implementation 'io.jmix.rest:jmix-rest-starter'
+    implementation 'io.jmix.security:jmix-security-oauth2-starter'
+    implementation 'io.jmix.sessions:jmix-sessions-starter'
+    implementation 'io.jmix.localfs:jmix-localfs-starter'
+
+    implementation 'io.jmix.ui:jmix-ui-starter'
+    implementation 'io.jmix.ui:jmix-ui-data-starter'
+    implementation 'io.jmix.ui:jmix-ui-themes-compiled'
+    implementation 'io.jmix.ui:jmix-ui-widgets-compiled'
+    implementation 'io.jmix.security:jmix-security-ui-starter'
+
+    implementation 'ru.sb.jmix.sbaudit:sbaudit-starter'
+    implementation 'ru.sb.jmix.sbdenorm:sbdenorm-starter'
+    implementation 'ru.sb.jmix.sbmonitoring:sbmonitoring-starter'
+
+    implementation 'ru.sb.jmix.sbauth:sbauth-starter'
+
+    implementation 'ru.sb.jmix.sblogger:sblogger-starter'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.opencsv:opencsv:5.3'
+
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    implementation "io.jmix.audit:jmix-audit-starter"
+    implementation "io.jmix.audit:jmix-audit-ui-starter"
+    implementation "io.jmix.dynattr:jmix-dynattr-ui-starter"
+    implementation "io.jmix.dynattr:jmix-dynattr-starter"
+    implementation "io.jmix.datatools:jmix-datatools-ui-starter"
+    implementation "io.jmix.datatools:jmix-datatools-starter"
+    runtimeOnly 'org.postgresql:postgresql'
+}
+
+test {
+    useJUnitPlatform()
+}
