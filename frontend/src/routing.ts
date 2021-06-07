@@ -1,3 +1,4 @@
+import { WaybillManagement } from "./app/screen/WaybillManagement";
 import { WaybillItemManagement } from "./app/wil/WaybillItemManagement";
 import { SpaceportManagement } from "./app/SpaceportManagement";
 import { PlanetManagement } from "./app/PlanetManagement";
@@ -83,4 +84,11 @@ menuItems.push({
   menuLink: "/waybillItemManagement",
   component: WaybillItemManagement,
   caption: "WaybillItemManagement"
+});
+
+menuItems.push({
+  pathPattern: "/waybillManagement/:entityId?",
+  menuLink: "/waybillManagement",
+  component: WaybillManagement,
+  caption: "WaybillManagement"
 });

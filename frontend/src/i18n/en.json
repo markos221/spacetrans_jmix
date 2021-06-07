@@ -5,6 +5,7 @@
   "management.editor.validationError": "Validation Error. Please check the data you entered.",
   "management.editor.created": "Entity has been created",
   "management.editor.updated": "Entity has been updated",
+  "router.WaybillManagement": "Waybill Management",
   "router.WaybillItem1Management": "Waybill Item1 Management",
   "router.WaybillItemManagement": "Waybill Item Management",
   "router.IndividualManagement": "Individual Management",

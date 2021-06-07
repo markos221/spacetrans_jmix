@@ -68,4 +68,13 @@
         </property>
         <property name="charge"/>
     </fetchPlan>
+    <fetchPlan entity="Waybill" name="waybill-fetch-plan" extends="_base">
+        <property name="creator" fetchPlan="_base"/>
+        <property name="shipper" fetchPlan="_base"/>
+        <property name="consignee" fetchPlan="_base"/>
+        <property name="departurePort" fetchPlan="_base"/>
+        <property name="destinationPort" fetchPlan="_base"/>
+        <property name="carrier" fetchPlan="_base"/>
+        <property name="items" fetchPlan="_base"/>
+    </fetchPlan>
 </fetchPlans>
