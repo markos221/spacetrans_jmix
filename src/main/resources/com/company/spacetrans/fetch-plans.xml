@@ -1,0 +1,71 @@
+<fetchPlans xmlns="http://jmix.io/schema/core/fetch-plans">
+    <fetchPlan entity="Moon" name="moon-fetch-plan" extends="_instance_name">
+        <property name="planet" fetchPlan="_base"/>
+        <property name="mass"/>
+        <property name="picture"/>
+    </fetchPlan>
+    <fetchPlan entity="Planet" name="planet-fetch-plan" extends="_instance_name">
+        <property name="semiMajorAxis"/>
+        <property name="orbitalPeriod"/>
+        <property name="rotationPeriod"/>
+        <property name="rings"/>
+        <property name="mass"/>
+        <property name="picture"/>
+    </fetchPlan>
+    <fetchPlan entity="Individual" name="individual-fetch-plan" extends="_instance_name">
+        <property name="lastName"/>
+        <property name="name"/>
+        <property name="email"/>
+        <property name="grade"/>
+    </fetchPlan>
+    <fetchPlan entity="Company" name="company-fetch-plan" extends="_instance_name">
+        <property name="registrationId"/>
+        <property name="companyType"/>
+        <property name="email"/>
+        <property name="grade"/>
+    </fetchPlan>
+    <fetchPlan entity="Carrier" name="carrier-fetch-plan" extends="_base">
+        <property name="ports" fetchPlan="_instance_name"/>
+    </fetchPlan>
+    <fetchPlan entity="Spaceport" name="spaceport-fetch-plan" extends="_base">
+        <property name="planet" fetchPlan="_instance_name"/>
+        <property name="moon" fetchPlan="_instance_name"/>
+        <property name="carriers" fetchPlan="_base"/>
+    </fetchPlan>
+    <fetchPlan entity="WaybillItem" name="waybillItem-fetch-plan" extends="_instance_name">
+        <property name="number"/>
+        <property name="weight"/>
+        <property name="dim" fetchPlan="_instance_name">
+            <property name="length"/>
+            <property name="width"/>
+            <property name="height"/>
+        </property>
+        <property name="charge"/>
+    </fetchPlan>
+    <fetchPlan entity="Dimensions" name="dimensions-fetch-plan" extends="_instance_name">
+        <property name="length"/>
+        <property name="width"/>
+        <property name="height"/>
+    </fetchPlan>
+    <fetchPlan entity="WaybillItem" name="waybillItem-fetch-plan_1" extends="_base">
+        <property name="dim" fetch="AUTO" fetchPlan="_base"/>
+    </fetchPlan>
+    <fetchPlan entity="WaybillItem" name="waybillItem-fetch-plan_2" extends="_instance_name">
+        <property name="number"/>
+        <property name="weight"/>
+        <property name="dim" fetch="JOIN" fetchPlan="_base"/>
+        <property name="charge"/>
+    </fetchPlan>
+    <fetchPlan entity="WaybillItem" name="waybillItem-fetch-plan_3" overwrite="true" extends="_local">
+        <property name="dim" fetch="JOIN" fetchPlan="_base"/>
+    </fetchPlan>
+    <fetchPlan entity="WaybillItem" name="waybillItem-fetch-plan_4" extends="_instance_name">
+        <property name="weight"/>
+        <property name="dim" fetch="JOIN" fetchPlan="_instance_name">
+            <property name="length"/>
+            <property name="width"/>
+            <property name="height"/>
+        </property>
+        <property name="charge"/>
+    </fetchPlan>
+</fetchPlans>
